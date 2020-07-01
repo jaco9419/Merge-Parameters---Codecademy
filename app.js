@@ -70,7 +70,7 @@ app.delete('/spice-racks/:spiceRackId', (req, res, next) => {
 const spicesRouter = require('./spicesRouter');
 
 // Write your code below:
-
+app.use('/spice-racks/:spiceRackId/spices', spicesRouter);
 
 
 app.listen(PORT, () => {
