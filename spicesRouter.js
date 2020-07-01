@@ -1,4 +1,6 @@
-const router = require('express').Router();
+const router = require('express').Router({
+  mergeParams: true
+});
 
 const spices = [
   {
@@ -33,6 +35,8 @@ router.post('/', (req, res, next) => {
   const newSpice = req.body.spice;
   if (newSpice.name && newSpice.grams) {
     newSpice.id = nextSpiceId++;
+    
+    newSpice.spiceRackId = Number(req.params.spiceRackId);
     spices.push(newSpice);
     res.status(201).send(newSpice);
   } else {
